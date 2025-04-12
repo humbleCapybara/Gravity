@@ -1,9 +1,11 @@
 #include <stdio.h>
+#include <math.h>
 #include "raylib.h"
 int main(){
     // Window
     float windowHeight{ 500 };
     float windowWidth{ 600 };
+    const int fps{ 60 };
 
     // Circle
     float radius = 25;
@@ -11,7 +13,8 @@ int main(){
     float posY = windowWidth / 2;
     bool cclicked  = false;
     float cvelocity = 0;
-    const float cgravity = 1000;
+    const float cgravity = 500;
+    float bounciness = 0.8f;
 
     // Mouse position
     float mPosX;
@@ -19,6 +22,7 @@ int main(){
 
 
     InitWindow(windowWidth, windowHeight, "Hello World! ");
+    SetTargetFPS(fps);
     while(!WindowShouldClose()){
         BeginDrawing();
             ClearBackground(WHITE);
@@ -46,15 +50,23 @@ int main(){
                 cclicked = !cclicked;
             }
 
-            if (posY <= windowHeight-radius){
-                // gravity
-                cvelocity += cgravity * dt;
-                posY += cvelocity * dt;
-            }else{
-                cvelocity = 0;
+            // gravity
+            cvelocity += cgravity * dt;
+            posY += cvelocity * dt;
+            
+            if(posY + radius > windowHeight){
+                // Clamp to floor
+                posY = windowHeight - radius;
+
+                // add bounciness
+                cvelocity *= -bounciness;
+
+                // reduce tiny bouncing
+                if (fabs(cvelocity) < 5.0f)
+                    cvelocity = 0;
             }
 
-            
+
         EndDrawing();
     }
     CloseWindow();
