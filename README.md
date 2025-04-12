@@ -5,7 +5,7 @@ This is a simple project using the [Raylib](https://www.raylib.com/) library whe
 ## 🚀 Features
 
 - Simple physics-based gravity simulation
-- Ball drops and bounces (if implemented)
+- Ball drops and bounces
 - Clean Raylib rendering
 - Beginner-friendly code
 
