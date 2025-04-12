@@ -56,6 +56,7 @@ int main(){
                 cvelocity = 0;
             }
 
+            // This is not working
             if (posY >= windowHeight-radius){
                 // add bounciness
                 cvelocity *= -bounciness * dt;
