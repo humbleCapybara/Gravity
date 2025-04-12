@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #include "raylib.h"
 int main(){
     // Window
@@ -12,6 +13,7 @@ int main(){
     bool cclicked  = false;
     float cvelocity = 0;
     const float cgravity = 1000;
+    float bounciness = 0.8f;
 
     // Mouse position
     float mPosX;
@@ -54,7 +56,14 @@ int main(){
                 cvelocity = 0;
             }
 
-            
+            if (posY >= windowHeight-radius){
+                // add bounciness
+                cvelocity *= -bounciness * dt;
+
+                // Optional: reduce tiny bouncing
+                if (fabs(cvelocity) < 1.0f)
+                cvelocity = 0;
+            }
         EndDrawing();
     }
     CloseWindow();
