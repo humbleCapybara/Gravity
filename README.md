@@ -20,10 +20,10 @@ This is a simple project using the [Raylib](https://www.raylib.com/) library whe
 
 ## 📂 Project Structure
 
-Gravity-Ball/
-├── main.c # Main source code
-├── README.md # This file
-└── Makefile / build
+Gravity-Ball/ <br>
+├── main.c # Main source code <br>
+├── README.md # This file <br>
+└── Makefile / build <br>
 
 
 ---
