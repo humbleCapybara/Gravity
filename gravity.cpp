@@ -47,6 +47,7 @@ int main(){
             if ((inCircle && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) || IsMouseButtonDown(MOUSE_LEFT_BUTTON)){
                 posX = mPosX;
                 posY = mPosY;
+                cvelocity = 0;
                 cclicked = !cclicked;
             }
 
