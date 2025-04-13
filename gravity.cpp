@@ -21,7 +21,7 @@ int main(){
     float mPosY;
 
 
-    InitWindow(windowWidth, windowHeight, "Hello World! ");
+    InitWindow(windowWidth, windowHeight, "Gravity Ball");
     SetTargetFPS(fps);
     while(!WindowShouldClose()){
         BeginDrawing();
@@ -67,6 +67,19 @@ int main(){
                     cvelocity = 0;
             }
 
+            if (posX + radius > windowWidth){
+                // clamp mechanism
+                posX = windowWidth - radius;
+            }
+
+            if (posX - radius < 0){
+                posX = radius;
+            }
+
+            if (posY - radius < 0){
+                posY = radius;
+            }
+            
 
         EndDrawing();
     }
